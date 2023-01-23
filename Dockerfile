@@ -6,14 +6,14 @@ WORKDIR /bgremover
 
 COPY . .
 
-RUN mamba env create -f environment.yml
+# pre-cache the weights
+RUN python load_model.py
+
+# the rest is already installed in the base image
+RUN pip install Flask
 
 ENV FLASK_APP=api
 ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_RUN_PORT=5000
 
-ENTRYPOINT ["mamba", "run", "--no-capture-output", "-n", "bgremover", "flask", "run"]
-
-
-
-
+CMD ["flask", "run"]
