@@ -82,9 +82,6 @@ def process_dir(in_dir: str, out_dir: str, remover: BgRemover) -> None:
         remover.remove_background(img, new_path)
 
 
-# product
-# print(keys[0].parts[1:])
-
 
 
 
