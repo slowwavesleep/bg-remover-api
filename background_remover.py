@@ -59,6 +59,7 @@ def img_from_url(url):
 
 def default_init() -> BgRemover:
     device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
+    print(f"Using {device}")
 
     preprocessor = transforms.Compose([
         transforms.ToTensor(),
